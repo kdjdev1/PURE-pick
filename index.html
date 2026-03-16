@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PurePick – Digitized Farmers Market</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen" style="position:fixed;inset:0;background:#1a5e2a;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity 0.5s;">
+  <div style="font-family:'Playfair Display',serif;font-size:2rem;color:white;font-weight:900;">Pure<span style="color:#7bc142">Pick</span></div>
+  <div style="width:200px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;overflow:hidden;">
+    <div style="height:100%;background:#7bc142;border-radius:2px;animation:loadFill 1.5s ease forwards;"></div>
+  </div>
+  <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;">Loading PurePick Market...</div>
+  <style>
+    @keyframes loadFill { from { width: 0; } to { width: 100%; } }
+    #loading-screen.hide { opacity: 0; pointer-events: none; }
+  </style>
+</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <span class="logo">Pure<span>Pick</span></span>
+  <ul class="nav-links">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#ai-advisor">AI Advisor</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#products" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Sri Lanka's First Digital Farmers Market</div>
+    <h1>Farm Fresh,<br><em>Delivered Smart</em></h1>
+    <p class="hero-sub">Order the freshest fruits and vegetables directly from local farmers — powered by AI for the smartest shopping experience in modern Sri Lanka.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">🛒 Browse Market</a>
+      <a href="#ai-advisor" class="btn-outline">🤖 Ask AI Advisor</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="pub-count">0+</div><div class="stat-label">Fresh Products</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Local Farmers</div></div>
+      <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SEASONAL BANNER ══ -->
+<div class="seasonal-banner">
+  <span>🌾</span>
+  <p>This Season's Pick: Tropical Harvest Special — Mangoes, Pineapples & King Coconuts now in peak season!</p>
+  <a href="#products" class="banner-cta">View Seasonal</a>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Fresh Market</div>
+      <h2 class="section-title">Today's Harvest</h2>
+      <p class="section-sub">Handpicked daily from farms across Sri Lanka, delivered to your door within 24 hours of harvest.</p>
+    </div>
+    <div class="filter-tabs">
+      <button class="tab active" onclick="filterProds('all',this)">All</button>
+      <button class="tab" onclick="filterProds('fruit',this)">Fruits</button>
+      <button class="tab" onclick="filterProds('vegetable',this)">Vegetables</button>
+      <button class="tab" onclick="filterProds('seasonal',this)">Seasonal</button>
+    </div>
+  </div>
+  <div class="products-grid" id="prod-grid">
+    <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">
+      <div style="font-size:3rem;margin-bottom:1rem">⏳</div>Loading products from Firebase...
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI ADVISOR ══ -->
+<section id="ai-advisor">
+  <div class="ai-grid">
+    <div>
+      <div class="section-label" style="color:var(--lime)">Powered by AI</div>
+      <h2 class="section-title" style="color:white">Your Smart<br>Market Advisor</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6);margin-bottom:2.5rem;">
+        PurePick's AI advisor helps you choose the best produce for your recipes, alerts you to seasonal freshness, tracks prices, and recommends healthier alternatives.
+      </p>
+      <div class="ai-features">
+        <div class="ai-feature"><div class="ai-feature-icon">🔍</div><div><h4>Smart Freshness Detection</h4><p>AI analyzes harvest dates and flags the freshest picks each day.</p></div></div>
+        <div class="ai-feature"><div class="ai-feature-icon">🍽️</div><div><h4>Recipe-Based Shopping</h4><p>Tell the AI what you're cooking — it builds your ingredient list automatically.</p></div></div>
+        <div class="ai-feature"><div class="ai-feature-icon">📊</div><div><h4>Price Trend Alerts</h4><p>AI monitors daily price changes and tells you when to buy or wait.</p></div></div>
+        <div class="ai-feature"><div class="ai-feature-icon">🌿</div><div><h4>Nutrition Guidance</h4><p>Get AI-powered nutrition tips and healthier substitution ideas.</p></div></div>
+      </div>
+    </div>
+    <div class="ai-chat-ui">
+      <div class="chat-header">
+        <div class="ai-avatar">🌿</div>
+        <div><div class="ai-name">PurePick AI Advisor</div><div class="ai-status">● Online & Ready</div></div>
+      </div>
+      <div class="chat-messages" id="chat-msgs">
+        <div class="msg ai">Hello! 👋 I'm your PurePick AI advisor. Ask me about freshness, recipes, nutrition, or today's best deals!</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-in" placeholder="Ask about any fruit or vegetable..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button class="chat-send" onclick="sendChat()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how">
+  <div style="text-align:center;max-width:600px;margin:0 auto 3rem;">
+    <div class="section-label">Simple & Fast</div>
+    <h2 class="section-title">Farm to Table<br>in 4 Easy Steps</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><div class="step-icon">🔍</div><h3>Browse Market</h3><p>Explore hundreds of fresh fruits and vegetables harvested daily from trusted local farmers.</p></div>
+    <div class="step-card"><div class="step-num">2</div><div class="step-icon">🤖</div><h3>Ask the AI</h3><p>Use our AI advisor for personalized recommendations, recipe help, and freshness ratings.</p></div>
+    <div class="step-card"><div class="step-num">3</div><div class="step-icon">🛒</div><h3>Add & Order</h3><p>Add items to your cart, choose delivery time, and complete your order in just a few taps.</p></div>
+    <div class="step-card"><div class="step-num">4</div><div class="step-icon">🚚</div><h3>Fresh Delivery</h3><p>Receive farm-fresh produce at your doorstep within 24 hours of harvest — guaranteed fresh.</p></div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="section-label">What Customers Say</div>
+  <h2 class="section-title">Loved by Families Across Sri Lanka</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card"><p class="testimonial-text">The papaya I ordered was the most vibrant, sweet one I've ever had. Arrived perfectly ripe the very next morning. The AI advisor even suggested pairing it with lime and mint!</p><div class="testimonial-author"><div class="author-avatar">P</div><div><div class="stars">★★★★★</div><div class="author-name">Priya Mendis</div><div class="author-role">Home Cook, Colombo</div></div></div></div>
+    <div class="testimonial-card"><p class="testimonial-text">PurePick completely changed how I source ingredients for my restaurant. Fair prices, always fresh, and the AI helps me plan menus based on what's in season.</p><div class="testimonial-author"><div class="author-avatar">K</div><div><div class="stars">★★★★★</div><div class="author-name">Kamal Jayawardena</div><div class="author-role">Restaurant Owner, Kandy</div></div></div></div>
+    <div class="testimonial-card"><p class="testimonial-text">As a farmer, this platform opened a whole new market for me. I now sell directly to customers at fair prices with no middlemen. PurePick truly empowers local agriculture.</p><div class="testimonial-author"><div class="author-avatar">S</div><div><div class="stars">★★★★★</div><div class="author-name">Sunil Rathnayake</div><div class="author-role">Farmer, Nuwara Eliya</div></div></div></div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-photo-wrap" style="display:flex;flex-direction:column;align-items:center;">
+      <img src="photo.jpg"
+           onerror="this.src='https://ui-avatars.com/api/?name=PAO+Angel&background=1a5e2a&color=fff&size=400'"
+           alt="P.A.O. Angel" class="about-photo">
+      <div class="about-photo-badge">🌿 PurePick Founder</div>
+    </div>
+    <div class="about-info">
+      <div class="section-label">Meet the Seller</div>
+      <div class="about-name">P.A.O. Angel</div>
+      <div class="about-title">Founder & Lead Seller — PurePick Digital Farmers Market</div>
+      <p class="about-bio">Passionate about connecting Sri Lankan farmers directly with modern households, I built PurePick to bring the freshest fruits and vegetables to your doorstep with zero compromise on quality. Based in Madampe, our roots run deep in Sri Lanka's farming heartland.</p>
+      <div class="about-details">
+        <div class="detail-card"><div class="detail-icon">👤</div><div><div class="detail-label">Full Name</div><div class="detail-value">P.A.O. Angel</div></div></div>
+        <div class="detail-card"><div class="detail-icon">📞</div><div><div class="detail-label">Contact</div><div class="detail-value">076 102 9880</div></div></div>
+        <div class="detail-card"><div class="detail-icon">📍</div><div><div class="detail-label">Home Area</div><div class="detail-value">Madampe</div></div></div>
+        <div class="detail-card"><div class="detail-icon">🏪</div><div><div class="detail-label">Branches</div><div class="detail-value">3 Active Locations</div></div></div>
+      </div>
+      <div class="detail-label" style="margin-bottom:0.6rem;">Our Branch Locations</div>
+      <div class="branches-row">
+        <span class="branch-tag">📍 Madampe</span>
+        <span class="branch-tag">📍 Chilaw</span>
+        <span class="branch-tag">📍 Kuliyapitiya</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Pure<span>Pick</span></span>
+      <p>Sri Lanka's premier digitized farmers market, connecting local farmers directly with modern households through technology and AI.</p>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><a href="#products">All Products</a><a href="#products">Fruits</a><a href="#products">Vegetables</a><a href="#products">Seasonal</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Our Farmers</a><a href="#">Sustainability</a><a href="#">Contact</a></div>
+    <div class="footer-col"><h4>Admin</h4><a href="#" onclick="openLoginModal();return false;" style="color:var(--lime)">🔒 Admin Login</a><a href="#">Help Center</a><a href="#">Privacy Policy</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PurePick. All rights reserved. Empowering Sri Lankan Farmers.</p>
+    <p>Built with ♥ for fresh, local produce</p>
+  </div>
+</footer>
+
+<!-- TOASTS -->
+<div id="cart-toast">✅ <span id="toast-txt">Added to cart!</span></div>
+<div class="success-toast" id="app-toast"></div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div style="text-align:center;margin-bottom:1.2rem;">
+      <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--green),var(--lime));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 0.8rem;">🔐</div>
+      <h2>Admin Login</h2>
+      <p>PurePick Admin & Seller Access</p>
+    </div>
+    <input type="text" id="lg-user" placeholder="Username" autocomplete="off">
+    <input type="password" id="lg-pass" placeholder="Password">
+    <button class="modal-btn" onclick="doLogin()">Login →</button>
+    <p class="modal-error" id="lg-err">❌ Incorrect username or password.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DASHBOARD (Main Admin + Seller Admin)
+══════════════════════════════════════════ -->
+<div id="dashboard" style="position:fixed;inset:0;background:var(--cream);z-index:8000;display:none;flex-direction:column;">
+
+  <!-- Dashboard Nav -->
+  <div id="d-nav" style="height:65px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;color:white;"></div>
+
+  <div class="dash-body">
+
+    <!-- Sidebar -->
+    <div class="dash-sidebar" id="d-sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="dash-main">
+
+      <!-- ── Overview ── -->
+      <div class="dash-panel" id="pnl-overview">
+        <div class="dash-title">Dashboard Overview</div>
+        <div class="dash-sub" id="d-welcome"></div>
+        <div class="stat-cards" id="d-stats"></div>
+        <div class="product-form" style="padding:1.5rem;">
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:1rem;">📋 Summary</h3>
+          <div id="d-summary" style="font-size:0.85rem;color:var(--muted);line-height:2.2;"></div>
+        </div>
+      </div>
+
+      <!-- ── Add Product ── -->
+      <div class="dash-panel" id="pnl-add">
+        <div class="dash-title">Add New Product</div>
+        <div class="dash-sub">Upload an image, set name, price and availability. Saved to Firebase instantly.</div>
+        <div class="product-form">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Product Image</label>
+              <div class="img-preview" id="ap-prev" onclick="document.getElementById('ap-file').click()">
+                <span id="ap-prev-txt">📷 Click to upload image</span>
+                <input type="file" id="ap-file" accept="image/*" onchange="prevImg(this,'ap-prev','ap-prev-txt')">
+              </div>
+            </div>
+            <div class="form-group"><label>Product Name</label><input type="text" id="ap-name" placeholder="e.g. Ripe Red Papaya"></div>
+            <div class="form-group"><label>Category</label>
+              <select id="ap-cat">
+                <option value="fruit">Fruit</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="seasonal">Seasonal</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Price (LKR)</label><input type="number" id="ap-price" placeholder="e.g. 350"></div>
+            <div class="form-group"><label>Unit</label><input type="text" id="ap-unit" placeholder="e.g. per kg"></div>
+            <div class="form-group full"><label>Description</label><textarea id="ap-desc" placeholder="Describe the product, origin, freshness..."></textarea></div>
+            <div class="form-group"><label>Availability</label>
+              <select id="ap-status">
+                <option value="true">Available</option>
+                <option value="false">Out of Stock</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-save" onclick="addProduct()">✅ Add to Market</button>
+            <button class="btn-cancel" onclick="clearAddForm()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── My Products ── -->
+      <div class="dash-panel" id="pnl-manage">
+        <div class="dash-title">My Products</div>
+        <div class="dash-sub">Manage products you have added to the market.</div>
+        <button class="add-product-btn" onclick="switchPanel('add')">➕ Add New Product</button>
+        <div id="edit-box" style="display:none;"></div>
+        <table class="products-table">
+          <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="my-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- ── ALL PRODUCTS (main admin only) ── -->
+      <div class="dash-panel" id="pnl-all">
+        <div class="dash-title">🌍 All Market Products</div>
+        <div class="dash-sub">Full view of every product by all seller admins. Only you can see and delete these.</div>
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;" id="all-filter-tabs">
+          <button class="tab active" onclick="setAllFilter('all',this)" style="font-size:0.8rem;">All</button>
+          <button class="tab" onclick="setAllFilter('fruit',this)" style="font-size:0.8rem;">🍎 Fruits</button>
+          <button class="tab" onclick="setAllFilter('vegetable',this)" style="font-size:0.8rem;">🥦 Vegetables</button>
+          <button class="tab" onclick="setAllFilter('seasonal',this)" style="font-size:0.8rem;">🌾 Seasonal</button>
+        </div>
+        <table class="products-table">
+          <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Added By</th><th>Status</th><th>Delete</th></tr></thead>
+          <tbody id="all-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- ── MANAGE ADMINS (main admin only) ── -->
+      <div class="dash-panel" id="pnl-admins">
+        <div class="dash-title">👥 Manage Seller Admins</div>
+        <div class="dash-sub">Create and manage seller admin accounts. Only the main admin can do this.</div>
+
+        <!-- Create Admin Form -->
+        <div style="background:linear-gradient(135deg,#0a2a14,#0d3318);border-radius:20px;padding:2rem;margin-bottom:2rem;color:white;border:2px solid var(--gold);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;color:var(--gold);">⭐ Create New Seller Admin Account</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;">Fill in all the details below. The seller admin will be able to login and add products to the market.</p>
+
+          <!-- Section: Personal Info -->
+          <div style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.8rem;font-weight:700;">👤 Personal Information</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.2rem;">
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Full Name *</label>
+              <input type="text" id="na-name" placeholder="e.g. Kamal Perera" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Contact Number</label>
+              <input type="text" id="na-contact" placeholder="e.g. 0771234567" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+          </div>
+
+          <!-- Section: Location Info -->
+          <div style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.8rem;font-weight:700;">📍 Location Details</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:1.2rem;">
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">District</label>
+              <input type="text" id="na-district" placeholder="e.g. Puttalam" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Town</label>
+              <input type="text" id="na-town" placeholder="e.g. Chilaw" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Village</label>
+              <input type="text" id="na-village" placeholder="e.g. Madampe" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Area / Branch</label>
+              <input type="text" id="na-area" placeholder="e.g. North Branch" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+          </div>
+
+          <!-- Section: Login Credentials -->
+          <div style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.8rem;font-weight:700;">🔑 Login Credentials</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.2rem;">
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Username *</label>
+              <input type="text" id="na-user" placeholder="e.g. kamal123" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;">
+              <label style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">Password *</label>
+              <input type="password" id="na-pass" placeholder="Set a strong password" style="padding:0.75rem 1rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#7bc142'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'">
+            </div>
+          </div>
+
+          <div style="margin-top:0.5rem;display:flex;align-items:center;gap:1rem;">
+            <button class="btn-save" onclick="createAdmin()" style="background:var(--gold);color:var(--dark);padding:0.9rem 2rem;">✅ Create Seller Admin</button>
+            <button onclick="clearAdminForm()" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);padding:0.9rem 1.5rem;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;">Clear</button>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;">Current Seller Admins</h3>
+        <table class="products-table">
+          <thead><tr><th>Name</th><th>Username</th><th>District</th><th>Town</th><th>Village</th><th>Contact</th><th>Products</th><th>Delete</th></tr></thead>
+          <tbody id="admins-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- ── Profile ── -->
+      <div class="dash-panel" id="pnl-profile">
+        <div class="dash-title">My Profile</div>
+        <div class="dash-sub">Your account information.</div>
+        <div id="prof-content"></div>
+      </div>
+
+    </div><!-- /dash-main -->
+  </div><!-- /dash-body -->
+</div><!-- /dashboard -->
+
+<!-- ══ LOAD JS (module type required for Firebase imports) ══ -->
+<script src="app.js"></script>
+
+</body>
+</html>
