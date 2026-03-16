@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PurePick – Digitized Farmers Market</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1a5e2a;--gl:#2d8a45;--lm:#7bc142;--gd:#e8a825;--cr:#fdf8f0;--dk:#111a0e;--tx:#2a3d24;--mt:#6b7c64;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden;}
+nav{position:fixed;top:0;width:100%;z-index:900;background:rgba(253,248,240,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(123,193,66,.2);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:66px;}
+nav.sc{box-shadow:0 4px 20px rgba(26,94,42,.1);}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--g);}
+.logo b{color:var(--lm);font-weight:900;}
+.nl{display:flex;gap:2rem;list-style:none;}
+.nl a{text-decoration:none;color:var(--tx);font-weight:500;font-size:.93rem;}
+.nl a:hover{color:var(--gl);}
+.nbtn{background:var(--g);color:#fff;padding:.5rem 1.3rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.87rem;}
+#hero{min-height:100vh;background:linear-gradient(135deg,#0d3318,#1a5e2a,#2d8a45);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:66px;}
+.hbg{position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(123,193,66,.12),transparent 50%),radial-gradient(circle at 80% 20%,rgba(232,168,37,.08),transparent 50%);}
+.hc{text-align:center;color:#fff;z-index:2;padding:2rem;max-width:780px;}
+.hbdg{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:.38rem 1.1rem;border-radius:50px;font-size:.82rem;margin-bottom:1.4rem;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,4.6rem);line-height:1.1;font-weight:900;}
+h1 em{color:var(--lm);font-style:normal;}
+.hs{font-size:1.08rem;color:rgba(255,255,255,.8);margin:1.3rem 0 2.1rem;line-height:1.7;}
+.hb{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.b1{background:var(--lm);color:var(--dk);padding:.82rem 1.9rem;border-radius:50px;font-weight:700;font-size:.96rem;text-decoration:none;}
+.b2{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);padding:.82rem 1.9rem;border-radius:50px;font-weight:600;font-size:.96rem;text-decoration:none;}
+.hst{display:flex;gap:3rem;justify-content:center;margin-top:2.8rem;}
+.hst-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--lm);}
+.hst-l{font-size:.77rem;color:rgba(255,255,255,.6);margin-top:.18rem;text-align:center;}
+section{padding:5rem 6%;}
+.sl{font-size:.77rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gl);margin-bottom:.65rem;}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:var(--dk);margin-bottom:.85rem;}
+.ss{color:var(--mt);font-size:.94rem;line-height:1.7;max-width:530px;}
+.sbn{background:linear-gradient(90deg,var(--gd),#f5c842);padding:1rem 6%;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.sbn p{font-weight:600;color:var(--dk);font-size:.91rem;}
+.sbna{background:var(--dk);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;}
+#products{background:#fff;}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.3rem;flex-wrap:wrap;gap:1rem;}
+.fts{display:flex;gap:.45rem;flex-wrap:wrap;}
+.ft{padding:.42rem 1.05rem;border-radius:50px;border:2px solid #e0e8d8;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.87rem;color:var(--mt);}
+.ft.on{background:var(--g);color:#fff;border-color:var(--g);}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:1.5rem;}
+.pc{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 5px 24px rgba(26,94,42,.1);transition:transform .3s,box-shadow .3s;position:relative;}
+.pc:hover{transform:translateY(-5px);box-shadow:0 13px 38px rgba(26,94,42,.16);}
+.pi{width:100%;height:185px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f0f9e8;}
+.pi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.pc:hover .pi img{transform:scale(1.06);}
+.pb{padding:1.05rem 1.2rem 1.2rem;}
+.pbdg{display:inline-block;background:#e8f5e0;color:var(--g);font-size:.69rem;font-weight:600;padding:.2rem .6rem;border-radius:50px;margin-bottom:.5rem;}
+.pn{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--dk);}
+.pd{font-size:.79rem;color:var(--mt);margin:.25rem 0 .72rem;line-height:1.5;}
+.pf{display:flex;align-items:center;justify-content:space-between;}
+.pp{font-size:1.12rem;font-weight:700;color:var(--g);}
+.pu{font-size:.7rem;color:var(--mt);}
+.pa{width:33px;height:33px;border-radius:50%;background:var(--g);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pa:hover{background:var(--gl);}
+.oos{position:absolute;top:9px;right:9px;background:rgba(192,57,43,.85);color:#fff;font-size:.67rem;font-weight:700;padding:.17rem .52rem;border-radius:50px;}
+#ai{background:linear-gradient(135deg,var(--dk),#0d2e18);color:#fff;position:relative;overflow:hidden;}
+#ai::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(123,193,66,.07),transparent 60%);}
+.aig{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative;z-index:1;}
+.aib{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:1.5rem;backdrop-filter:blur(8px);}
+.aih{display:flex;align-items:center;gap:.85rem;margin-bottom:1.2rem;}
+.aip{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--lm),var(--gl));display:flex;align-items:center;justify-content:center;font-size:1.15rem;}
+.ain{font-weight:600;font-size:.91rem;}
+.ais{font-size:.71rem;color:var(--lm);}
+.aim{display:flex;flex-direction:column;gap:.85rem;margin-bottom:1.05rem;min-height:185px;max-height:270px;overflow-y:auto;}
+.msg{padding:.72rem .92rem;border-radius:13px;font-size:.85rem;line-height:1.6;max-width:85%;}
+.msg.ai{background:rgba(123,193,66,.13);border:1px solid rgba(123,193,66,.2);align-self:flex-start;}
+.msg.us{background:var(--g);align-self:flex-end;}
+.msg.ty{align-self:flex-start;font-style:italic;color:rgba(255,255,255,.4);background:rgba(123,193,66,.07);}
+.aii{display:flex;gap:.6rem;}
+.aii input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.62rem 1.05rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;}
+.aii input:focus{border-color:var(--lm);}
+.aii input::placeholder{color:rgba(255,255,255,.3);}
+.ais2{width:38px;height:38px;border-radius:50%;background:var(--lm);border:none;cursor:pointer;color:var(--dk);font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+.aif{display:flex;flex-direction:column;gap:1.25rem;}
+.aifc{display:flex;gap:1.05rem;align-items:flex-start;}
+.aifi{width:44px;height:44px;border-radius:12px;background:rgba(123,193,66,.13);border:1px solid rgba(123,193,66,.2);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;}
+.aifc h4{font-size:.94rem;font-weight:600;margin-bottom:.22rem;}
+.aifc p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.55;}
+#how{background:var(--cr);}
+.hwg{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:1.6rem;margin-top:2.3rem;}
+.hwc{background:#fff;border-radius:16px;padding:1.7rem 1.4rem;box-shadow:0 4px 16px rgba(26,94,42,.07);text-align:center;transition:transform .3s;}
+.hwc:hover{transform:translateY(-4px);}
+.hwn{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--lm),var(--gl));color:#fff;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto .85rem;}
+.hwi{font-size:2.2rem;margin-bottom:.7rem;}
+.hwc h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.42rem;}
+.hwc p{font-size:.81rem;color:var(--mt);line-height:1.55;}
+#testimonials{background:#fff;}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.5rem;margin-top:2.3rem;}
+.tc{background:var(--cr);border-radius:16px;padding:1.5rem;position:relative;}
+.tc::before{content:'"';font-family:'Playfair Display',serif;font-size:4.2rem;color:var(--lm);opacity:.27;position:absolute;top:.35rem;left:1rem;line-height:1;}
+.tt{font-size:.87rem;line-height:1.7;color:var(--tx);margin-bottom:1.05rem;padding-top:1.3rem;}
+.ta{display:flex;align-items:center;gap:.72rem;}
+.tav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--lm));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.92rem;}
+.tn{font-weight:600;font-size:.87rem;}
+.tr{font-size:.74rem;color:var(--mt);}
+.tst{color:var(--gd);font-size:.82rem;margin-bottom:.17rem;}
+#about{background:linear-gradient(135deg,#f0f9e8,#e8f5d8);}
+.abg{display:grid;grid-template-columns:1fr 1.5fr;gap:3.2rem;align-items:center;}
+.aph{width:100%;max-width:295px;aspect-ratio:3/4;object-fit:cover;border-radius:22px;box-shadow:0 17px 52px rgba(26,94,42,.22);border:4px solid #fff;}
+.apbdg{display:inline-block;background:var(--g);color:#fff;padding:.58rem 1.25rem;border-radius:50px;font-weight:700;font-size:.85rem;margin-top:.85rem;}
+.an{font-family:'Playfair Display',serif;font-size:1.95rem;font-weight:900;color:var(--dk);margin-bottom:.22rem;}
+.at{color:var(--gl);font-weight:600;font-size:.94rem;margin-bottom:1.25rem;}
+.abio{color:var(--mt);line-height:1.8;margin-bottom:1.7rem;font-size:.91rem;}
+.adg{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.6rem;}
+.adc{background:#fff;border-radius:13px;padding:1.05rem 1.2rem;box-shadow:0 3px 13px rgba(26,94,42,.07);display:flex;align-items:center;gap:.75rem;}
+.adi{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--lm),var(--gl));display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.adl{font-size:.69rem;color:var(--mt);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.adv{font-size:.87rem;font-weight:700;color:var(--dk);margin-top:.1rem;}
+.bts{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.85rem;}
+.bt{background:var(--g);color:#fff;padding:.36rem .92rem;border-radius:50px;font-size:.78rem;font-weight:600;}
+footer{background:var(--dk);color:rgba(255,255,255,.7);padding:3.3rem 6% 1.6rem;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.3rem;margin-bottom:2.3rem;}
+.fb p{font-size:.85rem;line-height:1.7;max-width:245px;margin-top:.85rem;}
+.fc h4{color:#fff;font-weight:600;margin-bottom:.85rem;font-size:.9rem;}
+.fc a{display:block;color:rgba(255,255,255,.5);text-decoration:none;font-size:.82rem;margin-bottom:.42rem;}
+.fc a:hover{color:var(--lm);}
+.fb2{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;display:flex;justify-content:space-between;font-size:.78rem;flex-wrap:wrap;gap:.75rem;}
+/* TOASTS */
+#ctt{position:fixed;bottom:1.8rem;right:1.8rem;z-index:8999;background:var(--g);color:#fff;padding:.85rem 1.35rem;border-radius:13px;font-weight:500;font-size:.86rem;display:none;box-shadow:0 5px 24px rgba(26,94,42,.28);}
+#att{position:fixed;top:76px;right:1.8rem;z-index:8999;padding:.82rem 1.35rem;border-radius:10px;font-weight:600;font-size:.84rem;color:#fff;display:none;}
+#att.ok{background:var(--g);}
+#att.er{background:#c0392b;}
+/* MODAL */
+#lm{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:5000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.mb{background:#fff;border-radius:24px;padding:2.3rem;max-width:400px;width:90%;position:relative;}
+.mc{position:absolute;top:1rem;right:1rem;background:#f0f0f0;border:none;border-radius:50%;width:29px;height:29px;cursor:pointer;font-size:.95rem;}
+.mb h2{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.35rem;}
+.mb p{font-size:.84rem;color:var(--mt);margin-bottom:1.3rem;}
+.mb input{width:100%;padding:.82rem 1.05rem;border:2px solid #e0e0e0;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.91rem;margin-bottom:.82rem;outline:none;}
+.mb input:focus{border-color:var(--gl);}
+.mlb{width:100%;padding:.92rem;background:var(--g);color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.96rem;font-weight:700;cursor:pointer;}
+.mlb:hover{background:var(--gl);}
+#merr{color:#c0392b;font-size:.82rem;margin-top:.42rem;display:none;}
+/* DASHBOARD */
+#db{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--cr);z-index:7000;display:none;flex-direction:column;}
+.dn{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 1.8rem;color:#fff;flex-shrink:0;}
+.dn.ma{background:linear-gradient(90deg,#061208,#1a5e2a);}
+.dn.sa{background:linear-gradient(90deg,#1a5e2a,#2d8a45);}
+.dl{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;}
+.dl b{color:var(--lm);}
+.dr{padding:.26rem .82rem;border-radius:50px;font-size:.69rem;font-weight:700;letter-spacing:.8px;}
+.dr.ma{background:var(--gd);color:var(--dk);}
+.dr.sa{background:rgba(255,255,255,.18);color:#fff;}
+.do{background:rgba(255,255,255,.15);border:none;color:#fff;padding:.42rem 1.05rem;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.83rem;}
+.dbd{flex:1;display:flex;overflow:hidden;}
+.ds{width:215px;background:#fff;padding:1.3rem .95rem;box-shadow:2px 0 9px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:.28rem;overflow-y:auto;flex-shrink:0;}
+.dsl{font-size:.64rem;letter-spacing:2px;text-transform:uppercase;color:var(--mt);margin:.85rem 0 .25rem .48rem;font-weight:700;}
+.dt{padding:.62rem .75rem;border-radius:8px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--tx);display:flex;align-items:center;gap:.58rem;text-align:left;width:100%;}
+.dt.on{background:var(--g);color:#fff;}
+.dt:hover:not(.on){background:#f0f5ee;}
+.dm{flex:1;overflow-y:auto;padding:1.8rem;}
+.dp{display:none;}
+.dp.on{display:block;}
+.dtt{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;margin-bottom:.25rem;}
+.dts{color:var(--mt);font-size:.84rem;margin-bottom:1.6rem;}
+.sc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.92rem;margin-bottom:1.6rem;}
+.scd{background:#fff;border-radius:13px;padding:1.2rem;box-shadow:0 2px 9px rgba(0,0,0,.06);}
+.scd .n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--g);}
+.scd .l{font-size:.74rem;color:var(--mt);margin-top:.15rem;}
+/* FORM */
+.pf{background:#fff;border-radius:16px;padding:1.7rem;box-shadow:0 2px 13px rgba(0,0,0,.07);max-width:690px;}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+.fi{display:flex;flex-direction:column;gap:.36rem;}
+.fi.fw{grid-column:1/-1;}
+.fi label{font-size:.79rem;font-weight:600;color:var(--tx);}
+.fi input,.fi select,.fi textarea{padding:.7rem .92rem;border:2px solid #e0e8d8;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;}
+.fi input:focus,.fi select:focus,.fi textarea:focus{border-color:var(--gl);}
+.fi textarea{resize:vertical;min-height:75px;}
+.ip{width:100%;height:150px;border-radius:8px;border:2px dashed #c8dbc0;display:flex;align-items:center;justify-content:center;background:#f5fbf2;color:var(--mt);font-size:.81rem;cursor:pointer;overflow:hidden;position:relative;}
+.ip img{width:100%;height:100%;object-fit:cover;}
+.ip input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.fa{display:flex;gap:.85rem;margin-top:1.2rem;}
+.bs{background:var(--g);color:#fff;padding:.72rem 1.7rem;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;}
+.bs:hover{background:var(--gl);}
+.bc{background:#f0f0f0;color:var(--tx);padding:.72rem 1.7rem;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;}
+.bad{background:var(--lm);color:var(--dk);border:none;padding:.62rem 1.25rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;margin-bottom:1.2rem;display:inline-flex;align-items:center;gap:.42rem;}
+/* TABLE */
+.tb{width:100%;border-collapse:collapse;background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 2px 9px rgba(0,0,0,.06);}
+.tb th{background:var(--g);color:#fff;padding:.82rem .95rem;text-align:left;font-size:.78rem;font-weight:600;}
+.tb td{padding:.78rem .95rem;border-bottom:1px solid #f0f5ee;font-size:.83rem;vertical-align:middle;}
+.tb tr:last-child td{border-bottom:none;}
+.tb tr:hover td{background:#f8fbf6;}
+.ti{width:40px;height:40px;border-radius:7px;object-fit:cover;}
+.be{background:var(--g);color:#fff;border:none;padding:.3rem .72rem;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:600;}
+.bd{background:#fde8e8;color:#c0392b;border:none;padding:.3rem .72rem;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:600;margin-left:.25rem;}
+.bav{background:#e8f5e0;color:var(--g);padding:.17rem .52rem;border-radius:50px;font-size:.69rem;font-weight:700;}
+.bos{background:#fde8e8;color:#c0392b;padding:.17rem .52rem;border-radius:50px;font-size:.69rem;font-weight:700;}
+.bsl{background:#e8f0fe;color:#1a73e8;padding:.17rem .62rem;border-radius:50px;font-size:.69rem;font-weight:700;}
+/* ADMIN FORM */
+.af{background:linear-gradient(135deg,#061208,#0d3318);border-radius:16px;padding:1.7rem;margin-bottom:1.7rem;color:#fff;border:2px solid var(--gd);}
+.af h3{font-family:'Playfair Display',serif;font-size:1.18rem;margin-bottom:.35rem;color:var(--gd);}
+.af p{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:1.2rem;}
+.afs{font-size:.63rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);margin:.85rem 0 .52rem;font-weight:700;}
+.afg{display:grid;gap:.7rem;}
+.afg2{grid-template-columns:1fr 1fr;}
+.afg3{grid-template-columns:1fr 1fr 1fr;}
+.afi{display:flex;flex-direction:column;gap:.28rem;}
+.afi label{font-size:.7rem;color:rgba(255,255,255,.42);font-weight:600;}
+.afi input{padding:.68rem .92rem;border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;background:rgba(255,255,255,.07);color:#fff;outline:none;}
+.afi input:focus{border-color:var(--lm);}
+.afi input::placeholder{color:rgba(255,255,255,.3);}
+.afbt{display:flex;gap:.75rem;margin-top:1rem;}
+.afbs{background:var(--gd);color:var(--dk);border:none;padding:.72rem 1.7rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;}
+.afbc{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);padding:.72rem 1.35rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;}
+/* PROFILE */
+.pc2{background:#fff;border-radius:16px;padding:1.7rem;box-shadow:0 2px 13px rgba(0,0,0,.07);max-width:460px;}
+.pt{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.7rem;padding-bottom:1.3rem;border-bottom:2px solid #f0f5ee;}
+.pav{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--gl);}
+.pnm{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;}
+.prl{color:var(--gl);font-size:.8rem;font-weight:600;margin-top:.18rem;}
+.pfs{display:flex;flex-direction:column;gap:.7rem;}
+.pr{display:flex;align-items:center;gap:.85rem;padding:.7rem .92rem;background:#f8fbf6;border-radius:8px;}
+.pic2{width:28px;height:28px;border-radius:6px;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+.plb{font-size:.69rem;color:var(--mt);font-weight:600;}
+.pvl{font-size:.86rem;font-weight:600;color:var(--dk);}
+@media(max-width:768px){
+  nav .nl,nav .nbtn{display:none;}
+  .aig,.abg{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr 1fr;}
+  .ds{width:48px;padding:.7rem .28rem;}
+  .dsl,.dt span{display:none;}
+  .fg2,.adg{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <span class="logo">Pure<b>Pick</b></span>
+  <ul class="nl">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#ai">AI Advisor</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#products" class="nbtn">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbg"></div>
+  <div class="hc">
+    <div class="hbdg">🌱 Sri Lanka's First Digital Farmers Market</div>
+    <h1>Farm Fresh,<br><em>Delivered Smart</em></h1>
+    <p class="hs">Order the freshest fruits and vegetables directly from local farmers — powered by AI for the smartest shopping experience in modern Sri Lanka.</p>
+    <div class="hb">
+      <a href="#products" class="b1">🛒 Browse Market</a>
+      <a href="#ai" class="b2">🤖 Ask AI Advisor</a>
+    </div>
+    <div class="hst">
+      <div><div class="hst-n" id="pcount">7+</div><div class="hst-l">Fresh Products</div></div>
+      <div><div class="hst-n">50+</div><div class="hst-l">Local Farmers</div></div>
+      <div><div class="hst-n">4.9★</div><div class="hst-l">Customer Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL BANNER -->
+<div class="sbn">
+  <span>🌾</span>
+  <p>Tropical Harvest Special — Mangoes, Pineapples & King Coconuts now in peak season!</p>
+  <a href="#products" class="sbna">View Seasonal</a>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="ph">
+    <div>
+      <div class="sl">Fresh Market</div>
+      <h2 class="st">Today's Harvest</h2>
+      <p class="ss">Handpicked daily from farms across Sri Lanka, delivered within 24 hours.</p>
+    </div>
+    <div class="fts">
+      <button class="ft on" onclick="filterP('all',this)">All</button>
+      <button class="ft" onclick="filterP('fruit',this)">Fruits</button>
+      <button class="ft" onclick="filterP('vegetable',this)">Vegetables</button>
+      <button class="ft" onclick="filterP('seasonal',this)">Seasonal</button>
+    </div>
+  </div>
+  <div class="pg" id="pg"></div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <div class="aig">
+    <div>
+      <div class="sl" style="color:var(--lm)">Powered by AI</div>
+      <h2 class="st" style="color:#fff">Your Smart<br>Market Advisor</h2>
+      <p class="ss" style="color:rgba(255,255,255,.6);margin-bottom:1.9rem;">PurePick's AI advisor helps you choose the best produce, tracks prices, and recommends based on your recipes and diet goals.</p>
+      <div class="aif">
+        <div class="aifc"><div class="aifi">🔍</div><div><h4>Smart Freshness Detection</h4><p>AI flags the freshest picks each day based on harvest data.</p></div></div>
+        <div class="aifc"><div class="aifi">🍽️</div><div><h4>Recipe-Based Shopping</h4><p>Tell the AI what you're cooking — it builds your ingredient list.</p></div></div>
+        <div class="aifc"><div class="aifi">📊</div><div><h4>Price Trend Alerts</h4><p>AI monitors daily price changes and advises best time to buy.</p></div></div>
+        <div class="aifc"><div class="aifi">🌿</div><div><h4>Nutrition Guidance</h4><p>Get AI-powered nutrition tips and healthier substitution ideas.</p></div></div>
+      </div>
+    </div>
+    <div class="aib">
+      <div class="aih"><div class="aip">🌿</div><div><div class="ain">PurePick AI Advisor</div><div class="ais">● Online & Ready</div></div></div>
+      <div class="aim" id="aim"><div class="msg ai">Hello! 👋 I'm your PurePick AI advisor. Ask me about freshness, recipes, nutrition, or today's best deals!</div></div>
+      <div class="aii">
+        <input type="text" id="aii" placeholder="Ask about any fruit or vegetable..." onkeypress="if(event.key==='Enter')aiSend()">
+        <button class="ais2" onclick="aiSend()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div style="text-align:center;max-width:560px;margin:0 auto 2.3rem">
+    <div class="sl">Simple & Fast</div>
+    <h2 class="st">Farm to Table in 4 Easy Steps</h2>
+  </div>
+  <div class="hwg">
+    <div class="hwc"><div class="hwn">1</div><div class="hwi">🔍</div><h3>Browse Market</h3><p>Explore fresh fruits and vegetables harvested daily from trusted local farmers.</p></div>
+    <div class="hwc"><div class="hwn">2</div><div class="hwi">🤖</div><h3>Ask the AI</h3><p>Use our AI advisor for personalized recommendations and freshness ratings.</p></div>
+    <div class="hwc"><div class="hwn">3</div><div class="hwi">🛒</div><h3>Add & Order</h3><p>Add items to your cart and complete your order in just a few taps.</p></div>
+    <div class="hwc"><div class="hwn">4</div><div class="hwi">🚚</div><h3>Fresh Delivery</h3><p>Receive farm-fresh produce at your doorstep within 24 hours — guaranteed.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sl">What Customers Say</div>
+  <h2 class="st">Loved by Families Across Sri Lanka</h2>
+  <div class="tg">
+    <div class="tc"><p class="tt">The papaya I ordered was the most vibrant, sweet one I've ever had. Arrived perfectly ripe the next morning. The AI advisor suggested pairing it with lime — brilliant!</p><div class="ta"><div class="tav">P</div><div><div class="tst">★★★★★</div><div class="tn">Priya Mendis</div><div class="tr">Home Cook, Colombo</div></div></div></div>
+    <div class="tc"><p class="tt">PurePick completely changed how I source ingredients for my restaurant. Fair prices, always fresh, and the AI helps me plan menus based on what's in season.</p><div class="ta"><div class="tav">K</div><div><div class="tst">★★★★★</div><div class="tn">Kamal Jayawardena</div><div class="tr">Restaurant Owner, Kandy</div></div></div></div>
+    <div class="tc"><p class="tt">As a farmer, this platform opened a whole new market for me. I now sell directly to customers at fair prices with no middlemen. PurePick truly empowers us.</p><div class="ta"><div class="tav">S</div><div><div class="tst">★★★★★</div><div class="tn">Sunil Rathnayake</div><div class="tr">Farmer, Nuwara Eliya</div></div></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="abg">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <img src="photo.jpg" onerror="this.src='https://ui-avatars.com/api/?name=PAO+Angel&background=1a5e2a&color=fff&size=400'" alt="P.A.O. Angel" class="aph">
+      <span class="apbdg">🌿 PurePick Founder</span>
+    </div>
+    <div>
+      <div class="sl">Meet the Seller</div>
+      <div class="an">P.A.O. Angel</div>
+      <div class="at">Founder & Lead Seller — PurePick Digital Farmers Market</div>
+      <p class="abio">Passionate about connecting Sri Lankan farmers with modern households, I built PurePick to bring the freshest fruits and vegetables to your doorstep. Based in Madampe, our roots run deep in Sri Lanka's farming heartland.</p>
+      <div class="adg">
+        <div class="adc"><div class="adi">👤</div><div><div class="adl">Full Name</div><div class="adv">P.A.O. Angel</div></div></div>
+        <div class="adc"><div class="adi">📞</div><div><div class="adl">Contact</div><div class="adv">076 102 9880</div></div></div>
+        <div class="adc"><div class="adi">📍</div><div><div class="adl">Home Area</div><div class="adv">Madampe</div></div></div>
+        <div class="adc"><div class="adi">🏪</div><div><div class="adl">Branches</div><div class="adv">3 Locations</div></div></div>
+      </div>
+      <div style="font-size:.69rem;color:var(--mt);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.52rem;">Our Branch Locations</div>
+      <div class="bts"><span class="bt">📍 Madampe</span><span class="bt">📍 Chilaw</span><span class="bt">📍 Kuliyapitiya</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg">
+    <div class="fb"><span class="logo flogo">Pure<b>Pick</b></span><p>Sri Lanka's premier digitized farmers market, connecting local farmers with modern households through technology and AI.</p></div>
+    <div class="fc"><h4>Shop</h4><a href="#products">All Products</a><a href="#products">Fruits</a><a href="#products">Vegetables</a><a href="#products">Seasonal</a></div>
+    <div class="fc"><h4>Company</h4><a href="#">About Us</a><a href="#">Our Farmers</a><a href="#">Sustainability</a><a href="#">Contact</a></div>
+    <div class="fc"><h4>Admin</h4><a href="javascript:void(0)" onclick="showLogin()" style="color:var(--lm)">🔒 Admin Login</a><a href="#">Help Center</a><a href="#">Privacy Policy</a></div>
+  </div>
+  <div class="fb2"><p>© 2025 PurePick. All rights reserved.</p><p>Built with ♥ for fresh, local produce</p></div>
+</footer>
+
+<!-- TOASTS -->
+<div id="ctt"></div>
+<div id="att"></div>
+
+<!-- LOGIN MODAL -->
+<div id="lm">
+  <div class="mb">
+    <button class="mc" onclick="hideLogin()">✕</button>
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div style="width:50px;height:50px;background:linear-gradient(135deg,var(--g),var(--lm));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto .65rem;">🔐</div>
+      <h2>Admin Login</h2>
+      <p>PurePick Admin & Seller Access</p>
+    </div>
+    <input type="text" id="lu" placeholder="Username" autocomplete="off" onkeypress="if(event.key==='Enter')doLogin()">
+    <input type="password" id="lp" placeholder="Password" onkeypress="if(event.key==='Enter')doLogin()">
+    <button class="mlb" onclick="doLogin()">Login →</button>
+    <div id="merr">❌ Incorrect username or password.</div>
+  </div>
+</div>
+
+<!-- ════════════ DASHBOARD ════════════ -->
+<div id="db">
+  <div id="dnav" class="dn ma"></div>
+  <div class="dbd">
+    <div class="ds" id="dside"></div>
+    <div class="dm">
+
+      <!-- Overview -->
+      <div class="dp" id="p-ov">
+        <div class="dtt">Dashboard Overview</div>
+        <div class="dts" id="dwel"></div>
+        <div class="sc" id="dsc"></div>
+        <div class="pf" style="padding:1.35rem;">
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:.85rem;">📋 Summary</h3>
+          <div id="dsum" style="font-size:.83rem;color:var(--mt);line-height:2.1;"></div>
+        </div>
+      </div>
+
+      <!-- Add Product -->
+      <div class="dp" id="p-add">
+        <div class="dtt">Add New Product</div>
+        <div class="dts">Fill in all details and save to the market.</div>
+        <div class="pf">
+          <div class="fg2">
+            <div class="fi fw">
+              <label>Product Image</label>
+              <div class="ip" id="iprev" onclick="document.getElementById('ifile').click()">
+                <span id="iprevtxt">📷 Click to upload image</span>
+                <input type="file" id="ifile" accept="image/*" onchange="prevImg(this,'iprev','iprevtxt')">
+              </div>
+            </div>
+            <div class="fi"><label>Product Name *</label><input type="text" id="fn" placeholder="e.g. Ripe Red Papaya"></div>
+            <div class="fi"><label>Category *</label><select id="fc"><option value="fruit">Fruit</option><option value="vegetable">Vegetable</option><option value="seasonal">Seasonal</option></select></div>
+            <div class="fi"><label>Price (LKR) *</label><input type="number" id="fp" placeholder="e.g. 350"></div>
+            <div class="fi"><label>Unit *</label><input type="text" id="fu" placeholder="e.g. per kg"></div>
+            <div class="fi fw"><label>Description *</label><textarea id="fd" placeholder="Describe the product..."></textarea></div>
+            <div class="fi"><label>Availability</label><select id="fa"><option value="1">Available</option><option value="0">Out of Stock</option></select></div>
+          </div>
+          <div class="fa">
+            <button class="bs" onclick="addProd()">✅ Add to Market</button>
+            <button class="bc" onclick="clearPF()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Products -->
+      <div class="dp" id="p-mine">
+        <div class="dtt">My Products</div>
+        <div class="dts">Edit or remove your products from the market.</div>
+        <button class="bad" onclick="goPanel('p-add','t-add')">➕ Add New Product</button>
+        <div id="ebox" style="display:none;margin-bottom:1.2rem;"></div>
+        <table class="tb">
+          <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="minetb"></tbody>
+        </table>
+      </div>
+
+      <!-- All Products (main admin only) -->
+      <div class="dp" id="p-all">
+        <div class="dtt">🌍 All Market Products</div>
+        <div class="dts">Every product from all seller admins. Only you can delete any product.</div>
+        <div style="display:flex;gap:.45rem;margin-bottom:1.2rem;flex-wrap:wrap;" id="aftabs">
+          <button class="ft on" onclick="setAF('all',this)" style="font-size:.77rem;">All</button>
+          <button class="ft" onclick="setAF('fruit',this)" style="font-size:.77rem;">🍎 Fruits</button>
+          <button class="ft" onclick="setAF('vegetable',this)" style="font-size:.77rem;">🥦 Vegetables</button>
+          <button class="ft" onclick="setAF('seasonal',this)" style="font-size:.77rem;">🌾 Seasonal</button>
+        </div>
+        <table class="tb">
+          <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Added By</th><th>Status</th><th>Delete</th></tr></thead>
+          <tbody id="alltb"></tbody>
+        </table>
+      </div>
+
+      <!-- Manage Admins (main admin only) -->
+      <div class="dp" id="p-adm">
+        <div class="dtt">👥 Manage Seller Admins</div>
+        <div class="dts">Create and delete seller admin accounts. Only you can do this.</div>
+        <div class="af">
+          <h3>⭐ Create New Seller Admin Account</h3>
+          <p>Fill in the details below to create a new seller admin account.</p>
+          <div class="afs">👤 Personal Info</div>
+          <div class="afg afg2">
+            <div class="afi"><label>Full Name *</label><input type="text" id="an" placeholder="e.g. Kamal Perera"></div>
+            <div class="afi"><label>Contact</label><input type="text" id="ac" placeholder="e.g. 0771234567"></div>
+          </div>
+          <div class="afs">📍 Location</div>
+          <div class="afg afg3">
+            <div class="afi"><label>District</label><input type="text" id="adi" placeholder="e.g. Puttalam"></div>
+            <div class="afi"><label>Town</label><input type="text" id="ato" placeholder="e.g. Chilaw"></div>
+            <div class="afi"><label>Village</label><input type="text" id="avi" placeholder="e.g. Madampe"></div>
+          </div>
+          <div class="afg afg2" style="margin-top:.7rem;">
+            <div class="afi"><label>Area / Branch</label><input type="text" id="aar" placeholder="e.g. North Branch"></div>
+          </div>
+          <div class="afs">🔑 Login Credentials</div>
+          <div class="afg afg2">
+            <div class="afi"><label>Username *</label><input type="text" id="au" placeholder="e.g. kamal123"></div>
+            <div class="afi"><label>Password *</label><input type="password" id="apw" placeholder="Set a password"></div>
+          </div>
+          <div class="afbt">
+            <button class="afbs" onclick="createAdmin()">✅ Create Admin Account</button>
+            <button class="afbc" onclick="clearAF()">Clear</button>
+          </div>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.85rem;">Current Seller Admins</h3>
+        <table class="tb">
+          <thead><tr><th>Name</th><th>Username</th><th>District</th><th>Town</th><th>Village</th><th>Contact</th><th>Products</th><th>Delete</th></tr></thead>
+          <tbody id="admtb"></tbody>
+        </table>
+      </div>
+
+      <!-- Profile -->
+      <div class="dp" id="p-prof">
+        <div class="dtt">My Profile</div>
+        <div class="dts">Your account information.</div>
+        <div id="profbox"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────
+var CU = null;
+var PRODS = [];
+var ADMINS = [];
+var NID = 10;
+var PF = 'all';
+var AF = 'all';
+
+var MA = {username:'oshan',password:'oshan5555',name:'P.A.O. Angel',role:'main',area:'Madampe',contact:'076 102 9880'};
+
+var DP = [
+  {id:1,name:'Ripe Red Papaya',cat:'fruit',price:320,unit:'per kg',desc:'Vibrant, sun-ripened papaya with velvety red flesh. Rich in Vitamin C and antioxidants. Harvested from Kurunegala.',emoji:'🍈',avail:true,img:'https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:2,name:'Sweet Mango',cat:'fruit',price:480,unit:'per kg',desc:'Juicy Willard mangoes at peak ripeness. Sweet golden-orange flesh and tropical aroma.',emoji:'🥭',avail:true,img:'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:3,name:'King Coconut',cat:'fruit',price:120,unit:'each',desc:'Fresh thambili from Kelaniya farms. Natural electrolytes for hydration.',emoji:'🥥',avail:true,img:'https://images.unsplash.com/photo-1560637902-e019f5a8c5e7?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:4,name:'Garden Carrot',cat:'vegetable',price:180,unit:'per 500g',desc:'Crisp organic carrots from Nuwara Eliya highlands. Deep orange and naturally sweet.',emoji:'🥕',avail:true,img:'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:5,name:'Red Tomatoes',cat:'vegetable',price:140,unit:'per 500g',desc:'Vine-ripened tomatoes from Jaffna red soil. Perfect for curries and salads.',emoji:'🍅',avail:true,img:'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:6,name:'Fresh Pineapple',cat:'seasonal',price:260,unit:'each',desc:'Kew pineapples at peak season — golden and intensely aromatic from Kurunegala.',emoji:'🍍',avail:true,img:'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+  {id:7,name:'Watermelon',cat:'seasonal',price:350,unit:'per piece',desc:'Sweet watermelons from the dry zone. Deep red flesh and high water content.',emoji:'🍉',avail:false,img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80',by:'oshan',byn:'P.A.O. Angel'},
+];
+
+function save(){try{localStorage.setItem('pp_p',JSON.stringify(PRODS));localStorage.setItem('pp_a',JSON.stringify(ADMINS));localStorage.setItem('pp_n',NID);}catch(e){}}
+function load(){
+  try{
+    var p=localStorage.getItem('pp_p');
+    var a=localStorage.getItem('pp_a');
+    var n=localStorage.getItem('pp_n');
+    if(p)PRODS=JSON.parse(p);
+    if(a)ADMINS=JSON.parse(a);
+    if(n)NID=parseInt(n);
+    if(!PRODS.length){PRODS=JSON.parse(JSON.stringify(DP));NID=10;save();}
+  }catch(e){PRODS=JSON.parse(JSON.stringify(DP));NID=10;}
+}
+
+// ─── PUBLIC ─────────────────────────────
+function filterP(cat,el){
+  var tabs=document.querySelectorAll('.fts .ft');
+  for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('on');
+  el.classList.add('on');
+  PF=cat; renderPub();
+}
+function renderPub(){
+  var list=PF==='all'?PRODS:PRODS.filter(function(p){return p.cat===PF;});
+  var g=document.getElementById('pg');
+  document.getElementById('pcount').textContent=PRODS.length+'+';
+  if(!list.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--mt)"><div style="font-size:3rem;margin-bottom:1rem">🌿</div>No products yet!</div>';return;}
+  var html='';
+  for(var i=0;i<list.length;i++){
+    var p=list[i];
+    var cat=p.cat.charAt(0).toUpperCase()+p.cat.slice(1);
+    html+='<div class="pc">';
+    if(!p.avail) html+='<div class="oos">Out of Stock</div>';
+    html+='<div class="pi">';
+    if(p.img) html+='<img src="'+p.img+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
+    else html+='<span style="font-size:3.5rem">'+p.emoji+'</span>';
+    html+='</div>';
+    html+='<div class="pb">';
+    html+='<span class="pbdg">'+cat+'</span>';
+    html+='<div class="pn">'+p.name+'</div>';
+    html+='<div class="pd">'+p.desc.substring(0,82)+'...</div>';
+    html+='<div class="pf"><div><span class="pp">LKR '+p.price+'</span><br><span class="pu">'+p.unit+'</span></div>';
+    if(p.avail) html+='<button class="pa" onclick="addCart(\''+p.name.replace(/\'/g,"\\'")+'\')" >+</button>';
+    else html+='<button class="pa" disabled style="opacity:.4;cursor:not-allowed">+</button>';
+    html+='</div>';
+    html+='<div style="font-size:.69rem;color:var(--mt);margin-top:.32rem;">By: '+(p.byn||p.by||'PurePick')+'</div>';
+    html+='</div></div>';
+  }
+  g.innerHTML=html;
+}
+
+function addCart(name){
+  var t=document.getElementById('ctt');
+  t.textContent='✅ '+name+' added to cart!';
+  t.style.display='block';
+  setTimeout(function(){t.style.display='none';},2800);
+}
+
+// ─── AI CHAT ────────────────────────────
+var AIR={
+  papaya:'🍈 Ripe Red Papaya is at peak freshness! Loaded with Vitamin C and papain enzymes. Try it chilled or in a smoothie!',
+  mango:'🥭 Mangoes are in full season! Willard variety is sweeter. Price stable at LKR 480/kg.',
+  tomato:'🍅 Tomatoes at LKR 140/500g — great value. Jaffna-grown have more lycopene.',
+  carrot:'🥕 Nuwara Eliya carrots are super fresh. High altitude gives better sweetness.',
+  pineapple:'🍍 Peak pineapple season! Kew variety is firm, golden and intensely aromatic.',
+  coconut:'🥥 King Coconut is the best hydrator! Rich in potassium. Perfect after exercise.',
+  recipe:'🍽️ Tell me which dish you\'re cooking and I\'ll list ingredients from PurePick!',
+  fresh:'✅ All PurePick products harvested within 24 hours. 50+ local farmers, strict freshness checks.',
+  def:'🌿 I can help with freshness, nutrition, recipes, and prices. What are you curious about?'
+};
+function aiSend(){
+  var inp=document.getElementById('aii');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  var m=document.getElementById('aim');
+  m.innerHTML+='<div class="msg us">'+txt+'</div>';
+  m.innerHTML+='<div class="msg ty" id="aitype">PurePick AI is thinking...</div>';
+  inp.value='';
+  m.scrollTop=m.scrollHeight;
+  setTimeout(function(){
+    var ty=document.getElementById('aitype');
+    if(ty)ty.parentNode.removeChild(ty);
+    var l=txt.toLowerCase(),r=AIR.def;
+    if(l.indexOf('papaya')>=0)r=AIR.papaya;
+    else if(l.indexOf('mango')>=0)r=AIR.mango;
+    else if(l.indexOf('tomato')>=0)r=AIR.tomato;
+    else if(l.indexOf('carrot')>=0)r=AIR.carrot;
+    else if(l.indexOf('pineapple')>=0)r=AIR.pineapple;
+    else if(l.indexOf('coconut')>=0||l.indexOf('thambili')>=0)r=AIR.coconut;
+    else if(l.indexOf('recipe')>=0||l.indexOf('cook')>=0)r=AIR.recipe;
+    else if(l.indexOf('fresh')>=0||l.indexOf('quality')>=0)r=AIR.fresh;
+    m.innerHTML+='<div class="msg ai">'+r+'</div>';
+    m.scrollTop=m.scrollHeight;
+  },1200);
+}
+
+// ─── LOGIN ──────────────────────────────
+function showLogin(){
+  document.getElementById('lm').style.display='flex';
+  document.getElementById('merr').style.display='none';
+  document.getElementById('lu').value='';
+  document.getElementById('lp').value='';
+  setTimeout(function(){document.getElementById('lu').focus();},100);
+}
+function hideLogin(){
+  document.getElementById('lm').style.display='none';
+}
+function doLogin(){
+  var u=document.getElementById('lu').value.trim();
+  var p=document.getElementById('lp').value;
+  document.getElementById('merr').style.display='none';
+
+  // Check main admin
+  if(u===MA.username && p===MA.password){
+    CU={username:MA.username,name:MA.name,role:'main',area:MA.area,contact:MA.contact};
+    hideLogin();
+    openDash();
+    return;
+  }
+
+  // Check seller admins
+  var found=null;
+  for(var i=0;i<ADMINS.length;i++){
+    if(ADMINS[i].username===u && ADMINS[i].password===p){
+      found=ADMINS[i];
+      break;
+    }
+  }
+  if(found){
+    CU={username:found.username,name:found.name,role:'seller',area:found.area||'',contact:found.contact||'',district:found.district||'',town:found.town||'',village:found.village||''};
+    hideLogin();
+    openDash();
+  }else{
+    document.getElementById('merr').style.display='block';
+  }
+}
+
+// ─── DASHBOARD ──────────────────────────
+function openDash(){
+  var d=document.getElementById('db');
+  d.style.display='flex';
+  buildNav();
+  buildSide();
+  updStats();
+  renderMine();
+  if(CU.role==='main'){renderAll();renderAdmins();}
+  renderProf();
+  goPanel('p-ov','t-ov');
+}
+function closeDash(){
+  CU=null;
+  document.getElementById('db').style.display='none';
+}
+
+function buildNav(){
+  var isMa=CU.role==='main';
+  var nav=document.getElementById('dnav');
+  nav.className='dn '+(isMa?'ma':'sa');
+  nav.innerHTML=
+    '<div style="display:flex;align-items:center;gap:.85rem;">'+
+      '<span class="dl">Pure<b>Pick</b></span>'+
+      '<span class="dr '+(isMa?'ma':'sa')+'">'+(isMa?'⭐ MAIN ADMIN':'🌿 SELLER ADMIN')+'</span>'+
+    '</div>'+
+    '<div style="display:flex;align-items:center;gap:.85rem;">'+
+      '<span style="font-size:.82rem;opacity:.78;">👤 '+(CU.name||CU.username)+'</span>'+
+      '<button class="do" onclick="closeDash()">Logout ↗</button>'+
+    '</div>';
+}
+
+function buildSide(){
+  var isMa=CU.role==='main';
+  var s='';
+  s+='<div class="dsl">General</div>';
+  s+='<button class="dt" id="t-ov" onclick="goPanel(\'p-ov\',\'t-ov\')">📊 <span>Overview</span></button>';
+  s+='<div class="dsl">Products</div>';
+  s+='<button class="dt" id="t-add" onclick="goPanel(\'p-add\',\'t-add\')">➕ <span>Add Product</span></button>';
+  s+='<button class="dt" id="t-mine" onclick="goPanel(\'p-mine\',\'t-mine\')">📦 <span>My Products</span></button>';
+  if(isMa){
+    s+='<div class="dsl" style="color:var(--gd)">⭐ Main Admin</div>';
+    s+='<button class="dt" id="t-all" onclick="goPanel(\'p-all\',\'t-all\')">🌍 <span>All Products</span></button>';
+    s+='<button class="dt" id="t-adm" onclick="goPanel(\'p-adm\',\'t-adm\')">👥 <span>Manage Admins</span></button>';
+  }
+  s+='<div class="dsl">Account</div>';
+  s+='<button class="dt" id="t-prof" onclick="goPanel(\'p-prof\',\'t-prof\')">👤 <span>Profile</span></button>';
+  document.getElementById('dside').innerHTML=s;
+}
+
+function goPanel(pid,tid){
+  var panels=document.querySelectorAll('.dp');
+  for(var i=0;i<panels.length;i++) panels[i].classList.remove('on');
+  var tabs=document.querySelectorAll('.dt');
+  for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('on');
+  var panel=document.getElementById(pid);
+  var tab=document.getElementById(tid);
+  if(panel) panel.classList.add('on');
+  if(tab) tab.classList.add('on');
+  if(pid==='p-mine') renderMine();
+  if(pid==='p-all') renderAll();
+  if(pid==='p-adm') renderAdmins();
+}
+
+function updStats(){
+  if(!CU)return;
+  var mine=PRODS.filter(function(p){return p.by===CU.username;});
+  var isMa=CU.role==='main';
+  var fr=PRODS.filter(function(p){return p.cat==='fruit';}).length;
+  var vg=PRODS.filter(function(p){return p.cat==='vegetable';}).length;
+  var se=PRODS.filter(function(p){return p.cat==='seasonal';}).length;
+  var av=PRODS.filter(function(p){return p.avail;}).length;
+  var h='';
+  if(isMa){
+    h+=scard(PRODS.length,'Total Products');
+    h+=scard(av,'Available');
+    h+=scard(fr,'Fruits');
+    h+=scard(vg,'Vegetables');
+    h+=scard(se,'Seasonal');
+    h+=scard(ADMINS.length,'Seller Admins');
+  }else{
+    h+=scard(mine.length,'My Products');
+    h+=scard(mine.filter(function(p){return p.avail;}).length,'Available');
+    h+=scard(mine.filter(function(p){return p.cat==='fruit';}).length,'Fruits');
+    h+=scard(mine.filter(function(p){return p.cat==='vegetable';}).length,'Vegetables');
+  }
+  document.getElementById('dsc').innerHTML=h;
+  document.getElementById('dwel').textContent='Welcome back, '+(CU.name||CU.username)+'!';
+  document.getElementById('dsum').innerHTML=isMa?
+    '→ '+PRODS.length+' total products across all sellers<br>→ '+ADMINS.length+' active seller admin accounts<br>→ '+fr+' fruits, '+vg+' vegetables, '+se+' seasonal items<br>→ '+PRODS.filter(function(p){return !p.avail;}).length+' products currently out of stock':
+    '→ You have '+mine.length+' products listed<br>→ '+mine.filter(function(p){return p.avail;}).length+' available, '+mine.filter(function(p){return !p.avail;}).length+' out of stock';
+}
+function scard(n,l){return '<div class="scd"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>';}
+
+// ─── PRODUCT CRUD ────────────────────────
+function addProd(){
+  var n=document.getElementById('fn').value.trim();
+  var c=document.getElementById('fc').value;
+  var pr=parseInt(document.getElementById('fp').value);
+  var u=document.getElementById('fu').value.trim();
+  var d=document.getElementById('fd').value.trim();
+  var av=document.getElementById('fa').value==='1';
+  var img=document.getElementById('iprev').dataset.img||'';
+  if(!n||!pr||!u||!d){showToast('⚠️ Please fill all required fields','er');return;}
+  PRODS.push({id:NID++,name:n,cat:c,price:pr,unit:u,desc:d,avail:av,img:img,emoji:'🌿',by:CU.username,byn:CU.name||CU.username});
+  save();renderPub();updStats();
+  showToast('✅ "'+n+'" added to market!','ok');
+  clearPF();goPanel('p-mine','t-mine');
+}
+function clearPF(){
+  ['fn','fp','fu','fd'].forEach(function(id){document.getElementById(id).value='';});
+  var prev=document.getElementById('iprev');
+  var img=prev.querySelector('img');if(img)prev.removeChild(img);
+  document.getElementById('iprevtxt').style.display='';
+  delete prev.dataset.img;
+}
+
+function renderMine(){
+  if(!CU)return;
+  var mine=PRODS.filter(function(p){return p.by===CU.username;});
+  var tb=document.getElementById('minetb');
+  if(!mine.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--mt)">No products yet — add your first one!</td></tr>';return;}
+  var h='';
+  for(var i=0;i<mine.length;i++){
+    var p=mine[i];
+    h+='<tr>';
+    h+='<td>'+(p.img?'<img src="'+p.img+'" class="ti" onerror="this.style.display=\'none\'">':'<span style="font-size:1.7rem">'+p.emoji+'</span>')+'</td>';
+    h+='<td><strong>'+p.name+'</strong></td><td>'+p.cat+'</td><td>LKR '+p.price+'</td>';
+    h+='<td><span class="'+(p.avail?'bav':'bos')+'">'+(p.avail?'Available':'Out of Stock')+'</span></td>';
+    h+='<td><button class="be" onclick="openEdit('+p.id+')">✏️ Edit</button><button class="bd" onclick="delP('+p.id+',\''+p.name.replace(/\'/g,"\\'")+'\')">🗑</button></td>';
+    h+='</tr>';
+  }
+  tb.innerHTML=h;
+}
+
+function renderAll(){
+  var list=AF==='all'?PRODS:PRODS.filter(function(p){return p.cat===AF;});
+  var tb=document.getElementById('alltb');
+  if(!list.length){tb.innerHTML='<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--mt)">No products.</td></tr>';return;}
+  var h='';
+  for(var i=0;i<list.length;i++){
+    var p=list[i];
+    h+='<tr>';
+    h+='<td>'+(p.img?'<img src="'+p.img+'" class="ti" onerror="this.style.display=\'none\'">':'<span style="font-size:1.7rem">'+p.emoji+'</span>')+'</td>';
+    h+='<td><strong>'+p.name+'</strong></td><td>'+p.cat+'</td><td>LKR '+p.price+'</td>';
+    h+='<td><span class="bsl">'+(p.byn||p.by)+'</span></td>';
+    h+='<td><span class="'+(p.avail?'bav':'bos')+'">'+(p.avail?'Available':'Out of Stock')+'</span></td>';
+    h+='<td><button class="bd" onclick="delP('+p.id+',\''+p.name.replace(/\'/g,"\\'")+'\')">🗑 Delete</button></td>';
+    h+='</tr>';
+  }
+  tb.innerHTML=h;
+}
+function setAF(f,el){
+  var tabs=document.querySelectorAll('#aftabs .ft');
+  for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('on');
+  el.classList.add('on');AF=f;renderAll();
+}
+
+function openEdit(id){
+  var p=null;
+  for(var i=0;i<PRODS.length;i++){if(PRODS[i].id===id){p=PRODS[i];break;}}
+  if(!p)return;
+  var b=document.getElementById('ebox');
+  b.style.display='block';
+  b.innerHTML='<div class="pf" style="border-left:4px solid var(--gl);margin-bottom:1.2rem;">'+
+    '<h3 style="font-family:\'Playfair Display\',serif;margin-bottom:.85rem;">✏️ Editing: '+p.name+'</h3>'+
+    '<div class="fg2">'+
+      '<div class="fi"><label>Name</label><input id="en" value="'+p.name+'"></div>'+
+      '<div class="fi"><label>Category</label><select id="ec">'+
+        '<option value="fruit"'+(p.cat==='fruit'?' selected':'')+'>Fruit</option>'+
+        '<option value="vegetable"'+(p.cat==='vegetable'?' selected':'')+'>Vegetable</option>'+
+        '<option value="seasonal"'+(p.cat==='seasonal'?' selected':'')+'>Seasonal</option>'+
+      '</select></div>'+
+      '<div class="fi"><label>Price (LKR)</label><input type="number" id="ep" value="'+p.price+'"></div>'+
+      '<div class="fi"><label>Unit</label><input id="eu" value="'+p.unit+'"></div>'+
+      '<div class="fi fw"><label>Description</label><textarea id="ed">'+p.desc+'</textarea></div>'+
+      '<div class="fi"><label>Status</label><select id="es">'+
+        '<option value="1"'+(p.avail?' selected':'')+'>Available</option>'+
+        '<option value="0"'+(!p.avail?' selected':'')+'>Out of Stock</option>'+
+      '</select></div>'+
+      '<div class="fi"><label>New Image (optional)</label>'+
+        '<div class="ip" id="eprev" onclick="document.getElementById(\'ef\').click()" style="height:72px">'+
+          '<span id="eprevtxt">📷 Upload new image</span>'+
+          '<input type="file" id="ef" accept="image/*" onchange="prevImg(this,\'eprev\',\'eprevtxt\')">'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="fa">'+
+      '<button class="bs" onclick="saveEdit('+id+')">💾 Save Changes</button>'+
+      '<button class="bc" onclick="closeEdit()">Cancel</button>'+
+    '</div>'+
+  '</div>';
+  b.scrollIntoView({behavior:'smooth'});
+}
+function closeEdit(){var b=document.getElementById('ebox');b.style.display='none';b.innerHTML='';}
+function saveEdit(id){
+  var p=null;
+  for(var i=0;i<PRODS.length;i++){if(PRODS[i].id===id){p=PRODS[i];break;}}
+  if(!p)return;
+  p.name=document.getElementById('en').value.trim();
+  p.cat=document.getElementById('ec').value;
+  p.price=parseInt(document.getElementById('ep').value);
+  p.unit=document.getElementById('eu').value.trim();
+  p.desc=document.getElementById('ed').value.trim();
+  p.avail=document.getElementById('es').value==='1';
+  var ni=document.getElementById('eprev').dataset.img;
+  if(ni)p.img=ni;
+  save();renderPub();renderMine();
+  if(CU&&CU.role==='main')renderAll();
+  updStats();showToast('✅ "'+p.name+'" updated!','ok');closeEdit();
+}
+function delP(id,name){
+  if(!confirm('Delete "'+name+'"?'))return;
+  var newP=[];
+  for(var i=0;i<PRODS.length;i++){if(PRODS[i].id!==id)newP.push(PRODS[i]);}
+  PRODS=newP;
+  save();renderPub();renderMine();
+  if(CU&&CU.role==='main')renderAll();
+  updStats();showToast('🗑 "'+name+'" deleted.','ok');
+}
+
+// ─── ADMINS ──────────────────────────────
+function createAdmin(){
+  if(!CU||CU.role!=='main')return;
+  var n=document.getElementById('an').value.trim();
+  var c=document.getElementById('ac').value.trim();
+  var di=document.getElementById('adi').value.trim();
+  var to=document.getElementById('ato').value.trim();
+  var vi=document.getElementById('avi').value.trim();
+  var ar=document.getElementById('aar').value.trim();
+  var u=document.getElementById('au').value.trim();
+  var pw=document.getElementById('apw').value;
+  if(!n||!u||!pw){showToast('⚠️ Name, username and password are required','er');return;}
+  for(var i=0;i<ADMINS.length;i++){
+    if(ADMINS[i].username===u){showToast('❌ Username already taken','er');return;}
+  }
+  if(u===MA.username){showToast('❌ That username is reserved','er');return;}
+  ADMINS.push({id:Date.now(),name:n,contact:c,district:di,town:to,village:vi,area:ar,username:u,password:pw,role:'seller',created:(new Date()).toLocaleDateString()});
+  save();renderAdmins();updStats();
+  showToast('✅ Seller admin "'+n+'" created!','ok');
+  clearAF();
+}
+function clearAF(){
+  ['an','ac','adi','ato','avi','aar','au','apw'].forEach(function(id){document.getElementById(id).value='';});
+}
+function renderAdmins(){
+  var tb=document.getElementById('admtb');
+  if(!ADMINS.length){tb.innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--mt)">No seller admins yet. Create one above!</td></tr>';return;}
+  var h='';
+  for(var i=0;i<ADMINS.length;i++){
+    var a=ADMINS[i];
+    var cnt=0;for(var j=0;j<PRODS.length;j++){if(PRODS[j].by===a.username)cnt++;}
+    h+='<tr>';
+    h+='<td><strong>'+a.name+'</strong></td>';
+    h+='<td><code style="background:#f0f5ee;padding:.17rem .42rem;border-radius:5px;">'+a.username+'</code></td>';
+    h+='<td>'+(a.district||'—')+'</td><td>'+(a.town||'—')+'</td><td>'+(a.village||'—')+'</td>';
+    h+='<td>'+(a.contact||'—')+'</td><td>'+cnt+' products</td>';
+    h+='<td><button class="bd" onclick="delAdmin('+a.id+',\''+a.name.replace(/\'/g,"\\'")+'\',\''+a.username+'\')">🗑 Delete</button></td>';
+    h+='</tr>';
+  }
+  tb.innerHTML=h;
+}
+function delAdmin(id,name,uname){
+  if(!CU||CU.role!=='main')return;
+  var cnt=0;for(var i=0;i<PRODS.length;i++){if(PRODS[i].by===uname)cnt++;}
+  if(!confirm('Delete admin "'+name+'"?\nThis will also delete all '+cnt+' of their products!'))return;
+  var newP=[];for(var i=0;i<PRODS.length;i++){if(PRODS[i].by!==uname)newP.push(PRODS[i]);}
+  PRODS=newP;
+  var newA=[];for(var i=0;i<ADMINS.length;i++){if(ADMINS[i].id!==id)newA.push(ADMINS[i]);}
+  ADMINS=newA;
+  save();renderAdmins();renderPub();renderAll();updStats();
+  showToast('🗑 "'+name+'" and '+cnt+' products deleted.','ok');
+}
+
+// ─── PROFILE ────────────────────────────
+function renderProf(){
+  var isMa=CU&&CU.role==='main';
+  var rows='';
+  rows+=pr('👤','Name',CU.name||'—');
+  rows+=pr('🔑','Username',CU.username);
+  rows+=pr('🎭','Role',isMa?'Main Admin (Full Access)':'Seller Admin');
+  if(CU.contact)rows+=pr('📞','Contact',CU.contact);
+  if(CU.area)rows+=pr('🏪','Area',CU.area);
+  if(CU.district)rows+=pr('🗺️','District',CU.district);
+  if(CU.town)rows+=pr('🏙️','Town',CU.town);
+  if(CU.village)rows+=pr('🏡','Village',CU.village);
+  if(isMa)rows+=pr('🏪','Branches','Madampe • Chilaw • Kuliyapitiya');
+  document.getElementById('profbox').innerHTML=
+    '<div class="pc2">'+
+      '<div class="pt">'+
+        '<img src="photo.jpg" onerror="this.src=\'https://ui-avatars.com/api/?name='+encodeURIComponent(CU.name||CU.username)+'&background=1a5e2a&color=fff&size=200\'" class="pav">'+
+        '<div><div class="pnm">'+(CU.name||CU.username)+'</div><div class="prl">'+(isMa?'⭐ Main Administrator — PurePick':'🌿 Seller Admin')+'</div></div>'+
+      '</div>'+
+      '<div class="pfs">'+rows+'</div>'+
+    '</div>';
+}
+function pr(icon,label,val){return '<div class="pr"><div class="pic2">'+icon+'</div><div><div class="plb">'+label+'</div><div class="pvl">'+val+'</div></div></div>';}
+
+// ─── IMAGE PREVIEW ───────────────────────
+function prevImg(input,prevId,txtId){
+  var file=input.files[0];if(!file)return;
+  var r=new FileReader();
+  r.onload=function(e){
+    var prev=document.getElementById(prevId);
+    var ex=prev.querySelector('img');if(ex)prev.removeChild(ex);
+    var img=document.createElement('img');
+    img.src=e.target.result;
+    img.style.cssText='width:100%;height:100%;object-fit:cover;';
+    prev.insertBefore(img,prev.querySelector('input'));
+    if(txtId)document.getElementById(txtId).style.display='none';
+    prev.dataset.img=e.target.result;
+  };
+  r.readAsDataURL(file);
+}
+
+// ─── TOAST ───────────────────────────────
+function showToast(msg,type){
+  var t=document.getElementById('att');
+  t.textContent=msg;
+  t.className=type==='er'?'er':'ok';
+  t.style.display='block';
+  setTimeout(function(){t.style.display='none';},3000);
+}
+
+// ─── NAVBAR SCROLL ───────────────────────
+window.onscroll=function(){
+  document.getElementById('nav').classList.toggle('sc',window.scrollY>20);
+};
+
+// ─── INIT ────────────────────────────────
+window.onload=function(){
+  load();
+  renderPub();
+};
+</script>
+</body>
+</html>
